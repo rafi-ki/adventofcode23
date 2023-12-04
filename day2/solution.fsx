@@ -48,15 +48,25 @@ let aboveLimits (game: Game) =
     let aboveLimitBlue = game.Bags |> List.exists (fun x -> x.Blue > maxBlue)
     aboveLimitBlue || aboveLimitGreen || aboveLimitRed
 
-let solution1 =
+let mapToMaxBag (game: Game) =
+    let maxGreen = game.Bags |> List.map (fun x -> x.Green) |> List.max
+    let maxRed = game.Bags |> List.map (fun x -> x.Red) |> List.max
+    let maxBlue = game.Bags |> List.map (fun x -> x.Blue) |> List.max
+    { Green = maxGreen; Red = maxRed; Blue = maxBlue }
+
+let multiplySetOfCubes soc = soc.Green * soc.Red * soc.Blue
+
+// let solution1 =
+//     input
+//     |> Array.map parseToGame
+//     |> Array.filter (fun x -> not (aboveLimits x))
+//     |> Array.sumBy (fun x -> x.Index)
+
+let solution2 =
     input
     |> Array.map parseToGame
-    |> Array.filter (fun x -> not (aboveLimits x))
-    |> Array.sumBy (fun x -> x.Index)
+    |> Array.map mapToMaxBag
+    |> Array.map multiplySetOfCubes
+    |> Array.sum
 
-// let solution2 =
-//     input
-//     |> Array.map digitsFromText
-//     |> Array.sum
-
-let run = printf $"solution: %i{solution1}"
+let run = printf $"solution: %i{solution2}"
