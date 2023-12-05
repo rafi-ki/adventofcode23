@@ -2,12 +2,12 @@ open System
 open System.IO
 
 let input =
-    let text = File.ReadAllText "example.txt"
+    let text = File.ReadAllText "input.txt"
     text.Split Environment.NewLine
 
 let isDigit (x:Char) = Char.IsDigit x
 
-let numberChars = ["one"; "two"; "three"; "four"; "five"; "six"; "seven"; "eight"; "nine"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "10"; ]
+let numberChars = ["one"; "two"; "three"; "four"; "five"; "six"; "seven"; "eight"; "nine"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; ]
 
 let mapNumbers number = match number with
                         | "one" -> "1"
@@ -31,11 +31,13 @@ let matches (line: string) (number: string) = line.Contains number
 
 let matchesFor (line: string) (numbers: string list) =
     let matchingNumbers = numbers |> List.filter (matches line)
-    let indexesOfMatchingNumbers = matchingNumbers |> List.map (fun x -> (line.IndexOf x, x))
-    let result = indexesOfMatchingNumbers |> List.sortBy fst
-    let firstDigit = result |> List.head |> snd |> mapNumbers
-    let lastDigit = result |> List.last |> snd |> mapNumbers
-    Console.WriteLine(firstDigit + lastDigit)
+    let indexesOfMatchingNumbers = matchingNumbers |> List.map (fun x -> (line.IndexOf x, line.LastIndexOf x, x))
+    let firstIndexNumber = indexesOfMatchingNumbers |> List.minBy (fun (x, y, z) -> x)
+    let lastIndexNumber = indexesOfMatchingNumbers |> List.maxBy (fun (x, y, z) -> y)
+    let (_, _, z1) = firstIndexNumber;
+    let firstDigit = z1 |> mapNumbers
+    let (_, _, z2) = lastIndexNumber;
+    let lastDigit = z2 |> mapNumbers
     let digits = firstDigit.ToString() +  lastDigit.ToString()
     digits |> int
 

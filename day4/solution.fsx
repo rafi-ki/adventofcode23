@@ -44,10 +44,7 @@ let countWinningNumbers (card: Card) =
 
 let calculate (acc: InstanceCounter) (ele: Card) =
     let matches = countWinningNumbers ele
-    printfn $"index: {{%i{acc.Index}}}, matches: {{%i{matches}"
-    printfn $"copies: {{%A{acc.Copies}}}"
     let copiesOfLastIndex = if acc.Index = 0 then 1 else acc.Copies[acc.Index]
-    printfn $"current copies: {{%A{copiesOfLastIndex}}}"
     for i in acc.Index + 1 .. acc.Index + matches do
        acc.Copies[i] <- (acc.Copies[i] + copiesOfLastIndex)
     { acc with Index = acc.Index + 1 }
