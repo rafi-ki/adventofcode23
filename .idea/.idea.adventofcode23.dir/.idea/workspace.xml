@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d984b8b6-bbb4-4ae0-94b4-93c0aad06718" name="Changes" comment="started day 7">
+    <list default="true" id="d984b8b6-bbb4-4ae0-94b4-93c0aad06718" name="Changes" comment="day 7 p1 done">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.adventofcode23.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.adventofcode23.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/day7/solution.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/day7/solution.fsx" afterDir="false" />
     </list>
@@ -15,6 +15,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fb677c49ff6dea6e488dc65165d4cc1779be25b85e538fd35e93307a80ff43ee/prim-types.fs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -62,7 +65,7 @@
       <workItem from="1701520555727" duration="4345000" />
       <workItem from="1701802438094" duration="11385000" />
       <workItem from="1701943215940" duration="3251000" />
-      <workItem from="1702038294486" duration="8562000" />
+      <workItem from="1702038294486" duration="12505000" />
     </task>
     <task id="LOCAL-00001" summary="give up sol2 on day1">
       <option name="closed" value="true" />
@@ -128,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702041967656</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="day 7 p1 done">
+      <option name="closed" value="true" />
+      <created>1702064733490</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1702064733490</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +156,7 @@
     <MESSAGE value="started with day 6" />
     <MESSAGE value="day6 done" />
     <MESSAGE value="started day 7" />
-    <option name="LAST_COMMIT_MESSAGE" value="started day 7" />
+    <MESSAGE value="day 7 p1 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="day 7 p1 done" />
   </component>
 </project>
