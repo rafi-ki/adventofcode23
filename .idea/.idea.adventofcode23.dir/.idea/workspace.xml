@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d984b8b6-bbb4-4ae0-94b4-93c0aad06718" name="Changes" comment="">
+    <list default="true" id="d984b8b6-bbb4-4ae0-94b4-93c0aad06718" name="Changes" comment="day6 done">
+      <change afterPath="$PROJECT_DIR$/day7/example.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day7/input.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day7/solution.fsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.adventofcode23.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.adventofcode23.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/day6/solution.fsx" beforeDir="false" afterPath="$PROJECT_DIR$/day6/solution.fsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +64,7 @@
       <workItem from="1701520555727" duration="4345000" />
       <workItem from="1701802438094" duration="11385000" />
       <workItem from="1701943215940" duration="3251000" />
-      <workItem from="1702038294486" duration="369000" />
+      <workItem from="1702038294486" duration="3402000" />
     </task>
     <task id="LOCAL-00001" summary="give up sol2 on day1">
       <option name="closed" value="true" />
@@ -112,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701944494935</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="day6 done">
+      <option name="closed" value="true" />
+      <created>1702038811377</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702038811377</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +137,7 @@
     <MESSAGE value="progress" />
     <MESSAGE value="again. progress" />
     <MESSAGE value="started with day 6" />
-    <option name="LAST_COMMIT_MESSAGE" value="started with day 6" />
+    <MESSAGE value="day6 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="day6 done" />
   </component>
 </project>
