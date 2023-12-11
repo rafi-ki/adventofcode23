@@ -13,7 +13,6 @@ let rec calculateDiff (numbers: int array) nextValueFun =
     if numbers |> Array.forall (fun x -> x = 0) then
         0
     else
-        printfn $"next distance: %A{numbers}"
         let distanceOfNextRow = calcDistance numbers
         let diff = calculateDiff distanceOfNextRow nextValueFun
         nextValueFun (numbers, diff)
