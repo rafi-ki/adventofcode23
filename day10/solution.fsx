@@ -2,75 +2,56 @@ open System
 open System.IO
 
 let input =
-    let text = File.ReadAllText "example.txt"
+    let text = File.ReadAllText "input.txt"
     text.Replace('7', 'T')
 
 type Direction = NORTH | SOUTH | EAST | WEST
 
-
 let possibleMoves c =
     match c with
-    | 'S' -> [|NORTH; SOUTH; EAST; WEST|]
-    | '.' -> [||]
-    | '|' -> [|NORTH; SOUTH|]
-    | '-' -> [|EAST; WEST|]
-    | 'L' -> [|NORTH; EAST|]
-    | 'J' -> [|NORTH; WEST|]
-    | 'T' -> [|SOUTH; WEST|]
-    | 'F' -> [|SOUTH; EAST|]
-    | _ -> failwith "no possible!"
+    | 'S' -> [NORTH; SOUTH; EAST; WEST]
+    | '|' -> [NORTH; SOUTH]
+    | '-' -> [EAST; WEST]
+    | 'L' -> [NORTH; EAST]
+    | 'J' -> [NORTH; WEST]
+    | 'T' -> [SOUTH; WEST]
+    | 'F' -> [SOUTH; EAST]
+    | _ -> []
 
-let nextPoint point direction =
-    let x, y = point
-    match direction with
-    | EAST -> (x, y+1)
-    | WEST -> (x, y-1)
-    | NORTH -> (x-1, y)
-    | SOUTH -> (x+1, y)
+let nextPoint x y direction =
+    let result = match direction with
+                    | EAST -> (x, y+1)
+                    | WEST -> (x, y-1)
+                    | NORTH -> (x-1, y)
+                    | SOUTH -> (x+1, y)
+    result
 
 let traversablePoint area point =
-    let xLength = area |> Array2D.length1
-    let yLength = area |> Array2D.length2
-    let isDigitOrPoint c = Char.IsDigit c || c = '.'
+    let length = area |> Array2D.length2
+    let isDigitOrPoint c = (Char.IsDigit c) || c = '.'
     match point with
-    | x, y when x > xLength && y > yLength -> false
+    | x, y when x >= length || y >= length || x < 0 || y < 0 -> false
     | x, y when isDigitOrPoint area[x, y] -> false
     | _, _ -> true
 
-let traverseSingle (area: char[,]) (distance: int) (point: int*int) =
+let rec traverse (area: char[,]) (point: int*int) =
     let x, y = point
-    let distanceChar = distance.ToString()[0]
-    let nextPoints = possibleMoves area[x, y]
-                     |> Array.map (nextPoint point)
-                     |> Array.filter (traversablePoint area)
-    if nextPoints |> Array.isEmpty then
+    let mutable points = [(x, y, 0)]
+    let mutable currentDistance = 0
+    while points.IsEmpty |> not do
+        let x, y, d = points.Head
+        let distanceChar = d.ToString()[0]
+        let newPoints = possibleMoves area[x, y]
+                                 |> List.map (nextPoint x y)
+                                 |> List.filter (traversablePoint area)
+                                 |> List.map (fun (i, t) -> (i, t, d+1))
         area[x, y] <- distanceChar
-        distance
-    else
-        area[x, y] <- distanceChar
-        distance+1
+        points <- ((List.tail points) @ newPoints)
+        currentDistance <- d
+        if (d > currentDistance) then currentDistance <- d
+    printfn $"%A{area}"
+    currentDistance
 
-let rec traverse (area: char[,]) (distance: int) (point: int*int) =
-    let x, y = point
-    let distanceChar = distance.ToString()[0]
-    let nextPoints = possibleMoves area[x, y]
-                     |> Array.map (nextPoint point)
-                     |> Array.filter (traversablePoint area)
-    // let mutable distanceMut = distance
-    // for p in nextPoints do
-    //     let dPlusOne = (distanceMut + 1).ToString()[0]
-    //     area[fst p, snd p] <- dPlusOne
-    // distanceMut <- distanceMut + 1
-    if nextPoints |> Array.isEmpty then
-        area[x, y] <- distanceChar
-        distance
-    else
-        area[x, y] <- distanceChar
-        // printfn $"%A{area}"
-        // printfn $"nextPoints: %A{nextPoints}"
-        let traverseNext = traverse area (distance+1)
-        let distances = nextPoints |> Array.map traverseNext
-        Array.max distances
 
 let mapTo2dArrayWithStart (text: string) =
     let lines = text.Split Environment.NewLine |> Seq.toArray
@@ -86,8 +67,7 @@ let mapTo2dArrayWithStart (text: string) =
 
 let solution1 =
     let area, (startX, startY) = mapTo2dArrayWithStart input
-    printfn $"start is at {startX},{startY} = %A{area[startX, startY]}"
-    traverse area 0 (startX, startY)
+    traverse area (startX, startY)
 
 // let solution2 =
 //     input
